@@ -40,7 +40,7 @@ public class Task2b_PrintSortedNumbers {
             temp = arr[h];
             arr[h] = minNum;
             arr[minNumIndex] = temp;
-            System.out.print(arr[h]+ " ");
+            System.out.print(arr[h] + " ");
         }
 
     }
