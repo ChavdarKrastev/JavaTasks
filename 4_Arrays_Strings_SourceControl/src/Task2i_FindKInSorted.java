@@ -17,7 +17,7 @@ public class Task2i_FindKInSorted {
         int K = Integer.parseInt(str2);
  
         for (int i = 0; i < N; i++) {
-            System.out.println("enter element, each one bigger than previous" + (i + 1));
+            System.out.println("enter element, each one bigger than previous");
             String el = sc.nextLine();
             int number = Integer.parseInt(el);
 
@@ -25,7 +25,7 @@ public class Task2i_FindKInSorted {
         }
         
         if (K <= arr[N / 2]) {
-            for (int i = 0; i <= N/2; i++) {
+            for (int i = N / 2; i >= 0; i--) {
                 if (K == arr[i]) {
                     System.out.println(i);
                     break;
