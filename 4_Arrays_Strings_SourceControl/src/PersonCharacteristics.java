@@ -133,13 +133,11 @@ public class PersonCharacteristics {
                 String u = firstName + " " + lastName + " is under-aged";
                 sentences[a] = u;
             }
-
         }
         
 // printing the array of strings        
         for (int i = 0; i < sentences.length; i++) {
             System.out.println(sentences[i]);
         }
-
     }
 }
