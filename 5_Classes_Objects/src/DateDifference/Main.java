@@ -17,7 +17,7 @@ public class Main {
         byte day = date.nextByte();
         date.nextLine();
         
-        System.out.println("Enter 2nnd date - yyyy MM dd");
+        System.out.println("Enter 2nd date - yyyy MM dd");
         
         short year2 = date.nextShort();
         date.nextLine();
@@ -36,8 +36,9 @@ public class Main {
         secondDate.month = month2;
         secondDate.day = day2;
         
-        System.out.print(firstDate.getDaysDifference(secondDate.day, secondDate.month, secondDate.year));
-        //System.out.print(firstDate.test(secondDate.year));
+        System.out.println(firstDate.getDaysDifference(secondDate.day, secondDate.month, secondDate.year));
+        firstDate.printInfo();
+        secondDate.printInfo();
     }
     
 }

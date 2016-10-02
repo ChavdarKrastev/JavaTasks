@@ -23,40 +23,40 @@ public class SwiftDate {
     int daysInYear(int month) {
         int days = 0;
         switch (month) {
-            case 1:
+            case 0b01:
                 days += 0;
                 break;
-            case 2:
+            case 0b10:
                 days += 31;
                 break;
-            case 3:
+            case 0b11:
                 days += 59;
                 break;
-            case 4:
+            case 0b101:
                 days += 90;
                 break;
-            case 5:
+            case 0b110:
                 days += 120;
                 break;
-            case 6:
+            case 0b111:
                 days += 151;
                 break;
-            case 7:
+            case 0b1000:
                 days += 181;
                 break;
-            case 8:
+            case 0b1001:
                 days += 212;
                 break;
-            case 9:
+            case 0b1010:
                 days += 243;
                 break;
-            case 10:
+            case 0b1011:
                 days += 273;
                 break;
-            case 11:
+            case 0b1100:
                 days += 304;
                 break;
-            case 12:
+            case 0b1101:
                 days += 334;
                 break;
 
@@ -69,12 +69,11 @@ public class SwiftDate {
         int days = this.day;
         short months = this.month;
         int tempDays = 0;
-        
 
         if (this.year == year) {
             tempDays = days + daysInYear(months);
             diff = day + daysInYear(month);
-            diff-=tempDays;
+            diff -= tempDays;
             if (isLeapYear(year) && (tempDays <= 60) && (diff > 60)) {
                 diff += 1;
             }
@@ -112,20 +111,36 @@ public class SwiftDate {
         return diff;
     }
 
-    short test(short year)
-    {
-        
+    short test(short year) {
+
         //short a = this.year;
         short t = year;
-        
+
         return t;
     }
-    
-     public void printInfo() {
+
+    public void printInfo() {
+
         if (isLeapYear(this.year) == true) {
-            System.out.printf("%d , %d, %d - %d century. [It is a leap year]", this.year, this.month, this.day, getCentury(this.year));
+            if (this.month < 10) {
+                System.out.printf("%d %02d %d - %d century. [It is a leap year]", this.year, this.month, this.day, getCentury(this.year));
+            } else if (this.day < 10) {
+                System.out.printf("%d %d %02d - %d century. [It is a leap year]", this.year, this.month, this.day, getCentury(this.year));
+            } else if ((this.day < 10) && (this.month < 10)) {
+                System.out.printf("%d %02d %02d - %d century. [It is a leap year]", this.year, this.month, this.day, getCentury(this.year));
+            } else {
+                System.out.printf("%d %d %d - %d century. [It is a leap year]", this.year, this.month, this.day, getCentury(this.year));
+            }
+        } else if (this.month < 10) {
+            System.out.printf("%d %02d %d - %d century.", this.year, this.month, this.day, getCentury(this.year));
+        } else if (this.day < 10) {
+            System.out.printf("%d %d %02d - %d century.", this.year, this.month, this.day, getCentury(this.year));
+        } else if ((this.day < 10) && (this.month < 10)) {
+            System.out.printf("%d %02d %02d - %d century.", this.year, this.month, this.day, getCentury(this.year));
         } else {
-            System.out.printf("%d , %d, %d - %d century", this.year, this.month, this.day, getCentury(this.year));
+            System.out.printf("%d %d %d - %d century", this.year, this.month, this.day, getCentury(this.year));
         }
+        System.out.println();
+
     }
 }
