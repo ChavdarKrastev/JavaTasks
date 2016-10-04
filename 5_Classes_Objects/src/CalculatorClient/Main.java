@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String s = "s";
-
+        
         while (s.equals("END") == false) {
 
             System.out.println("Enter operation: ");
