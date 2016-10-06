@@ -4,8 +4,22 @@ public class Credentials {
 
     private String _username;
     private String _password;
-
+    
+    private int passwordIndex;
     private String[] passwords = new String[100];
+    
+    static Credentials[] users = new Credentials[200];
+    
+    Credentials(String user, String password)
+    {
+        this._username = user;
+        this._password = password;
+    }
+    
+    private void setUsername(String username)
+    {
+        this._username = username;
+    }
 
     String getUsername() {
         return _username;
@@ -15,6 +29,23 @@ public class Credentials {
         this._password = password;
     }
 
+    private String getPassword()
+    {
+        return _password;
+    }
+    
+    static boolean userExist (String user)
+    {
+        for(int i=0; i<users.length; i++)
+        {
+            if(users[i]._username.equals(user))
+            {
+                return true;
+            }
+        }
+         return false;
+    }
+    
     private boolean authentication(String password) {
         for (int i = 0; i < passwords.length; i++) {
             if (passwords[i] == password) {
@@ -31,27 +62,24 @@ public class Credentials {
         return false;
     }
 
-    private void savePassword(String newPassword)
+    void savePassword(String newPassword)
     {
-        for(int i=0; i<passwords.length; i++)
+        passwords[passwordIndex] = newPassword;
+        setPassword(newPassword);
+        passwordIndex++;
+        if(passwordIndex==100)
         {
-            if(passwords[i]!=null)
-            {
-                passwords[i] = newPassword;
-            }
+            passwordIndex = 0;
         }
     }
     
-    public void changePassword(String oldPassword, String newPassword) {
-        if (authentication(newPassword) == false) {
-            if (checkPassword(oldPassword)) {
-                setPassword(newPassword);
-                savePassword(newPassword);
-            } else {
+    void changePassword(String oldPassword, String newPassword) {
+        if ((authentication(oldPassword))&&(! authentication(newPassword))) {
+             savePassword(newPassword);
+        }
+             else {
                 System.out.println("fail");
             }
-        } else {
-            System.out.println("fail");
-        }
+        
     }
 }
