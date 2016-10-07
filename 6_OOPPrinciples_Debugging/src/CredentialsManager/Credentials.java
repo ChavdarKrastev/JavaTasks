@@ -5,9 +5,10 @@ public class Credentials {
     private String _username;
     private String _password;
     
-    private int passwordIndex;
+    private int passwordIndex = 0;
     private String[] passwords = new String[100];
     
+    static int usersIndex = 0;
     static Credentials[] users = new Credentials[200];
     
     Credentials(String user, String password)
@@ -25,7 +26,7 @@ public class Credentials {
         return _username;
     }
 
-    private void setPassword(String password) {
+    void setPassword(String password) {
         this._password = password;
     }
 
@@ -34,32 +35,64 @@ public class Credentials {
         return _password;
     }
     
-    static boolean userExist (String user)
+    static void addObject (Credentials object)
     {
-        for(int i=0; i<users.length; i++)
-        {
-            if(users[i]._username.equals(user))
-            {
-                return true;
-            }
-        }
-         return false;
+        users[usersIndex] = object;
+        usersIndex++;
     }
     
-    private boolean authentication(String password) {
+    static Credentials findObject (String user)
+    {
+        int a = 0;
+        for(int i=0; i<users.length; i++)
+        {
+            if(users[i]!=null)
+                //this check is to avoid error 
+            {
+                if(users[i]._username.equals(user))
+                {
+                    a = i;
+                    break;
+                }
+            }
+        } 
+        return users[a];
+    }
+    
+    static boolean userExist (String user)
+    {
+        boolean exist = false;
+        for(int i=0; i<users.length; i++)
+        {
+            if(users[i]!=null)
+                //this check is to avoid error 
+            {
+                if(users[i]._username.equals(user))
+                {
+                    exist= true;
+                    break;
+                }
+            }
+        }  
+        
+        return exist;
+    }
+    
+    boolean isPasswordUsed(String password) {
+        boolean used = false;
         for (int i = 0; i < passwords.length; i++) {
-            if (passwords[i] == password) {
-                return true;
+            if (passwords[i]==password) {
+                used =  true;
             }
         }
-        return false;
+        return used;
     }
-
-    private boolean checkPassword(String password) {
-        if (password == this._password) {
-            return true;
+    boolean checkPassword(String password) {
+            boolean rightPassword = false;
+        if (password.equals(this._password)) {
+            rightPassword= true;
         }
-        return false;
+        return rightPassword;
     }
 
     void savePassword(String newPassword)
@@ -73,13 +106,13 @@ public class Credentials {
         }
     }
     
-    void changePassword(String oldPassword, String newPassword) {
-        if ((authentication(oldPassword))&&(! authentication(newPassword))) {
-             savePassword(newPassword);
-        }
-             else {
-                System.out.println("fail");
-            }
-        
-    }
+//    void changePassword(String oldPassword, String newPassword) {
+//        if ((authentication(oldPassword))&&(! authentication(newPassword))) {
+//             savePassword(newPassword);
+//        }
+//             else {
+//                System.out.println("fail");
+//            }
+//        
+//    }
 }
