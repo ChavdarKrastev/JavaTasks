@@ -8,7 +8,7 @@ public class Bank {
     Account[] accounts = new Account[200];
     int accountIndex = 0;
 
-    void openAccount(String name, int govid, String username, String password) {
+    void openAccount(String name, long govid, String username, String password) {
         account = new Account(name, govid, username, password);
         accounts[accountIndex] = account;
         if (accountIndex == 200) {

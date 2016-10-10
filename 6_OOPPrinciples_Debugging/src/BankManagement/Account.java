@@ -5,11 +5,11 @@ package BankManagement;
 public class Account {
     
     private String name;
-    private int govid;
+    private long govid;
     private double balance;
     Credentials login;
     
-    Account (String name, int govid, String username, String password)
+    Account (String name, long govid, String username, String password)
     {
         this.name = name;
         this.govid = govid;
@@ -23,7 +23,14 @@ public class Account {
     
     void withdraw(double amount)
     {
+        if(amount>this.balance)
+        {
+            System.out.println("fail");
+        }
+        else
+        {
         this.balance -= amount;
+        }
     }
     
     double getBalance()
@@ -41,7 +48,7 @@ public class Account {
         return login.getUsername();
     }
     
-    int getGovId()
+    long getGovId()
     {
         return this.govid;
     }
