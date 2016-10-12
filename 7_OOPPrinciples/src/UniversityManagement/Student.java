@@ -1,24 +1,21 @@
-
 package UniversityManagement;
 
 class Student extends Person{
     
     String facultyNumber;
+    String[] subjects;
+    static Student[] students = new Student[500];
     
     Student(String name, String number, int tolerance,String facultyNumber, String[] subjects)
     {
-        super(name,number,tolerance, subjects);
-        
+        super(name,number,tolerance);
+        this.subjects = subjects;
         this.facultyNumber = facultyNumber;
     }
-    
-    
-    void work(University university)
+   
+    @Override
+    void work()
     {
-        if(this.getTolerance()>=50)
-        {
-            university.setBalance(10);
-        }
-    }
-    
+       
+    } 
 }

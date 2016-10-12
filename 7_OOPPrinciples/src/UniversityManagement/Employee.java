@@ -1,13 +1,15 @@
-
 package UniversityManagement;
 
-class Employee extends Person{
+abstract class Employee extends Person{
     
     int salaryPerHour;
     
-    void work()
-    {
-        
+    public Employee(String name, String phone, int tolerance, int salary) {
+        super(name, phone, tolerance);
+        this.salaryPerHour = salary;
     }
+
+    
+    
     
 }

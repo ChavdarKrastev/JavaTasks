@@ -1,4 +1,3 @@
-
 package UniversityManagement;
 
 public class UniversityManagement {

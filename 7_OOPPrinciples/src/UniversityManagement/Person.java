@@ -1,4 +1,3 @@
-
 package UniversityManagement;
 
 abstract class Person {
@@ -6,18 +5,20 @@ abstract class Person {
     private String name;
     private String phone;
     private int tolerance;
-    static Person[] individuals = new Person[500];
-    String[] subjects;
     
-    Person(String name, String phone, int tolerance, String[] subjects)
+    Person(String name, String phone, int tolerance)
     {
         this.name = name;
         this.phone = phone;
         this.tolerance = tolerance;
-        this.subjects = subjects;
+      
     }
+    
+    abstract void work();
+    
     String getName()
     {
+        
         return this.name;
     }
     
@@ -26,6 +27,9 @@ abstract class Person {
         return this.tolerance;
     }
     
-    abstract void work();
+    void setTolerance(int tolerance)
+    {
+        this.tolerance=tolerance;
+    }
     
 }
