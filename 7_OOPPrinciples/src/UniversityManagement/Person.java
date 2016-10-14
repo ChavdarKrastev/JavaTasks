@@ -14,7 +14,7 @@ abstract class Person {
       
     }
     
-    abstract void work();
+    abstract void work(University obj);
     
     String getName()
     {
