@@ -7,12 +7,6 @@ import java.util.Scanner;
 
 public class PersonCharacteristics {
 
-    public static void checkDates(LocalDate enrollment, LocalDate graduation) throws FieldsCheckException {
-        if (graduation.isBefore(enrollment)) {
-            throw new FieldsCheckException("Graduation date error.");
-        }
-    }
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -21,17 +15,12 @@ public class PersonCharacteristics {
         sc.nextLine();
 
         for (int i = 0; i < n; i++) {
-            
-                Person person = readPerson(sc.nextLine());
-               try { checkDates(person.getEducation().getEnrollmentDate(), person.getEducation().getGraduationDate());
-                System.out.println(person);
-            } catch (FieldsCheckException ex) {
-                System.out.println("Graduation date is expected to be after enrollment date.");
-            }
 
-            
+            Person person = readPerson(sc.nextLine());
+            System.out.println(person);
 
         }
+
     }
 
     private static Person readPerson(String data) {
@@ -71,11 +60,9 @@ public class PersonCharacteristics {
         } else {
             education = new HigherEducation(institutionName, enrollmentDate, graduationDate, degree);
         }
-
         if (graduationDate.isBefore(LocalDate.now())) {
             ((GradedEducation) education).gotGraduated(Float.parseFloat(split[9].trim()));
         }
-
         Person person = new Person(firstName, middleName, lastName, gender, height, dateOfBirth);
         person.addAddress(address);
         person.addEducation(education);
@@ -84,3 +71,4 @@ public class PersonCharacteristics {
 
     }
 }
+

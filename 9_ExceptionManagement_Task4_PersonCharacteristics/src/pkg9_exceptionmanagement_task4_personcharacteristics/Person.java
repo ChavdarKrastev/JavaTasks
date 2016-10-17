@@ -11,7 +11,7 @@ final class Person {
     private String middleName;
     private String lastName;
     private char gender;
-    private final LocalDate dateOfBirth;
+    private LocalDate dateOfBirth;
     private short height;
     
     private Education  education;
@@ -27,6 +27,7 @@ final class Person {
         
         this.dateOfBirth = dateOfBirth;
     }
+       
 
     public short getAge() {
         return (short) dateOfBirth.until(LocalDate.now(), ChronoUnit.YEARS);

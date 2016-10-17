@@ -1,5 +1,5 @@
 
-package pkg9_exceptionmanagement_task4_personcharacteristics;
+package pkg9_exceptionmanagement_task4_personcharacteristics.education;
 
 
 public class FieldsCheckException extends Exception{
