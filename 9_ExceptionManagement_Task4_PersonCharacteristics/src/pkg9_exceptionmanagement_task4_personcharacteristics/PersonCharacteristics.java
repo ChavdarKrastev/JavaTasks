@@ -15,15 +15,20 @@ public class PersonCharacteristics {
         sc.nextLine();
 
         for (int i = 0; i < n; i++) {
-
-            Person person = readPerson(sc.nextLine());
-            System.out.println(person);
-
+    try
+    {
+                Person person = readPerson(sc.nextLine());
+                System.out.println(person);
+            }
+    catch(FieldsCheckException ex)
+    {
+        System.out.println(ex);
+    }
         }
 
     }
 
-    private static Person readPerson(String data) {
+    private static Person readPerson(String data) throws FieldsCheckException {
 
         final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
 
@@ -61,8 +66,11 @@ public class PersonCharacteristics {
             education = new HigherEducation(institutionName, enrollmentDate, graduationDate, degree);
         }
         if (graduationDate.isBefore(LocalDate.now())) {
-            ((GradedEducation) education).gotGraduated(Float.parseFloat(split[9].trim()));
+            ((GradedEducation) education).gotGraduated(Float.parseFloat(split[18].trim()));
         }
+        
+        education.checkGraduationDate(graduationDate);
+        
         Person person = new Person(firstName, middleName, lastName, gender, height, dateOfBirth);
         person.addAddress(address);
         person.addEducation(education);
@@ -71,4 +79,3 @@ public class PersonCharacteristics {
 
     }
 }
-

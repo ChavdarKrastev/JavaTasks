@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class SecondaryEducation extends GradedEducation {
     
-    public SecondaryEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) {
+    public SecondaryEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) throws FieldsCheckException {
         super(institution, enrollmentDate, graduationDate);
     }
 

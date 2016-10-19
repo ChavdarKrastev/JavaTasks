@@ -1,8 +1,6 @@
-
 package pkg9_exceptionmanagement_task4_personcharacteristics.education;
 
-
-public class FieldsCheckException extends Exception{
+public class FieldsCheckException extends RuntimeException{
     
     FieldsCheckException(String message) {
         super(message);

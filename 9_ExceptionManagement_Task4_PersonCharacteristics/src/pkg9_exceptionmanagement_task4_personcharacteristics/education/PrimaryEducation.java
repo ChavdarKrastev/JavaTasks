@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class PrimaryEducation extends Education{
 
-    public PrimaryEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) {
+    public PrimaryEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) throws FieldsCheckException {
         super(institution, enrollmentDate, graduationDate);
     }
 

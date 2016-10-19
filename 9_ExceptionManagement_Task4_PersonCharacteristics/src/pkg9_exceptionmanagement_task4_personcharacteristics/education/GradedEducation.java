@@ -5,17 +5,20 @@ import java.time.LocalDate;
 public abstract class GradedEducation extends Education{
     float finalGrade;
 
-    public GradedEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) {
+    public GradedEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate) throws FieldsCheckException {
         super(institution, enrollmentDate, graduationDate);
     }
     
-    public float getFinalGrade(){
+    public float getFinalGrade() {
         if(isGraduated()){
-            return finalGrade;    
+             return finalGrade;    
         }
-        
+        else
+        {
         return -1;
+        }
     }
+    
     
     @Override
     void gotGraduated(){
@@ -26,7 +29,6 @@ public abstract class GradedEducation extends Education{
     public void gotGraduated(float finalGrade){
         
         gotGraduated();
-        
         this.finalGrade = finalGrade;
     }
 }

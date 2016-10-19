@@ -6,7 +6,7 @@ public class HigherEducation extends GradedEducation{
 
     String degree;
     
-    public HigherEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate, String degree) {
+    public HigherEducation(String institution, LocalDate enrollmentDate, LocalDate graduationDate, String degree) throws FieldsCheckException {
         super(institution, enrollmentDate, graduationDate);
         
         if(degree.equalsIgnoreCase("B")){

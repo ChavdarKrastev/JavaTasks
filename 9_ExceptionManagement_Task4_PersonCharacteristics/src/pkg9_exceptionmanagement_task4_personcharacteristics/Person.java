@@ -4,6 +4,8 @@ import pkg9_exceptionmanagement_task4_personcharacteristics.Address;
 import pkg9_exceptionmanagement_task4_personcharacteristics.education.*;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 final class Person {
 
@@ -33,6 +35,7 @@ final class Person {
         return (short) dateOfBirth.until(LocalDate.now(), ChronoUnit.YEARS);
     }
 
+    @Override
    public String toString(){
 
         String heOrShe;
@@ -66,10 +69,13 @@ final class Person {
                 education.getInstitutionName(), education.getEnrollmentDate());
         if(education.isGraduated()){
             result += String.format(" and finished on %s.", education.getGraduationDate());
-            
+           
             if( ! education.getDegree().equalsIgnoreCase("Primary")) {
-                result += String.format(" %s grade was %.3f.", hisOrHer, ((GradedEducation) education).getFinalGrade());
+                
+                    result += String.format(" %s grade was %.3f.", hisOrHer, ((GradedEducation) education).getFinalGrade());
+                
             }
+        
         } else{
             result += String.format(" and is supposed to graduate on %s.", education.getGraduationDate());
         }
