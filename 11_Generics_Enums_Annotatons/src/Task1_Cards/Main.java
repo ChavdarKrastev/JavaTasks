@@ -13,7 +13,17 @@ public class Main {
             }
             count++;
         }
+        count = 1;
+        for (CardRank rank : CardRank.values()) {
 
+            if (CardRank.values().length == count) {
+                System.out.print(rank);
+                System.out.println();
+            } else {
+                System.out.print(rank + ", ");
+            }
+            count++;
+        }
     }
 
 }
