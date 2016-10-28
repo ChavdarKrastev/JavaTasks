@@ -1,17 +1,16 @@
-package Task1_ListFileStructure;
+package Task2_ListRelativeFileStructure;
 
 import java.io.File;
 import java.util.Scanner;
 
-public class Task1_ListFileStructure {
+public class Task2_ListRelativeFileStructure {
 
     static void directoryNext(File file) {
         for (int i = 0; i < file.listFiles().length; i++) {
 
             if (file.listFiles()[i].isDirectory()) {
-
-                directoryNext(file.listFiles()[i]);
                 System.out.println(file.listFiles()[i]);
+                directoryNext(file.listFiles()[i]);
             } else if (file.listFiles()[i].isFile()) {
 
                 System.out.println(file.listFiles()[i]);
@@ -28,8 +27,10 @@ public class Task1_ListFileStructure {
             if (file.isFile()) {
                 System.out.println(file);
             } else {
+                System.out.println(file);
                 directoryNext(file);
             }
         }
     }
+
 }
