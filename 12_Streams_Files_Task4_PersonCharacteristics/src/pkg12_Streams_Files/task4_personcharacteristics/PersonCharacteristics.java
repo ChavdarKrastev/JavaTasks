@@ -41,7 +41,7 @@ public class PersonCharacteristics {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         boolean fileError = false;
-        
+
         try {
             Person personfromFile = readPerson(readFile(args[0]));
             System.out.println(personfromFile);
