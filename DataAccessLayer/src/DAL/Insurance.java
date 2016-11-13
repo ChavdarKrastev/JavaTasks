@@ -8,12 +8,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Stack;
 import personaldetails.Citizen;
 
 public class Insurance {
 
-    public static SocialInsuranceRecord getInsurance(int id) {
+    public static ArrayList<SocialInsuranceRecord> getInsurance(int id) throws SQLException {
         SocialInsuranceRecord sir = null;
+        ArrayList<SocialInsuranceRecord> arrSir = new ArrayList();
         //ResultSet rs = null;
 
         String sqlquery = "SELECT * FROM personcharacteristics.insurance "
@@ -24,9 +27,11 @@ public class Insurance {
             statement.setInt(1, id);
 
             try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
-                    sir = new SocialInsuranceRecord(rs.getInt(2), rs.getInt(3), rs.getDouble(4));
-                }
+                while (rs.next()) {
+                  
+                   sir = new SocialInsuranceRecord(rs.getInt(2), rs.getInt(3), rs.getDouble(4));
+                   arrSir.add(sir);
+                
             }
         } catch (SQLException ex) {
  
@@ -38,9 +43,9 @@ public class Insurance {
             }
 
         }
-        return sir;
+        return arrSir;
     }
-
+    }
     static void insertInsurance(int year, int month, double amount, int personID) {
         String sqlquery = "INSERT INTO personcharacteristics.insurance "
                 + "(year, month, amount, personID)"
@@ -87,8 +92,14 @@ public class Insurance {
 //        if (getInsurance(1) == null) {
 //            System.out.println("sir is null");
 //        } else {
-        //System.out.println("sir is not null");
-        System.out.println(getInsurance(1).getYear() +" "+getInsurance(1).getMonth()+" "+getInsurance(1).getAmount());
+
+for (int i = 0 ;i<getInsurance(1).size();i++)
+{
+    System.out.println(getInsurance(1).get(i).getMonth()+" "+getInsurance(1).get(i).getYear()+ " "+getInsurance(1).get(i).getAmount());
+}
+        //System.out.println();
+        
+       // System.out.println(getInsurance(1).getYear() +" "+getInsurance(1).getMonth()+" "+getInsurance(1).getAmount());
         //System.out.println(getInsurance(1).getYear());
 
 //Person p1 = new Person();
