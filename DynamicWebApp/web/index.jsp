@@ -1,23 +1,18 @@
-<%-- 
-    Document   : index
-    Created on : Nov 19, 2016, 11:14:29 PM
-    Author     : user1
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Dynamic Web App</title>
     </head>
     <body>
         </style>
 </head>
 <body>
 
-<form action="GetPersonInfo" method="processRequest"> 
-personID: <input name="personID">  
+<form action="GetPersonInfo" method="post"> 
+personID: <input type="text" input name="personID">  
 <input type="submit" value="Find"></p>
 </form> 
     
